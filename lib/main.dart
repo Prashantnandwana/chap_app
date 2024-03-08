@@ -1,0 +1,24 @@
+
+import 'package:chap_app/auth_gate.dart';
+import 'package:chap_app/firebase_options.dart';
+import 'package:chap_app/light_mode.dart';
+import 'package:chap_app/login_or_register.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options:DefaultFirebaseOptions.currentPlatform);
+  runApp(const MyApp());
+}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: AuthGate(),
+      theme: lightMode,
+    );
+  }
+}
